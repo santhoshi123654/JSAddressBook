@@ -176,6 +176,13 @@ let totalNumberOfContacts = addressBookArray.reduce(numberOfContactsinArray, 0)
 console.log("\nThe total number of contacts after deleting the contacts is:"+totalNumberOfContacts);
 console.log();
 
+// Duplicate Values
+let addC3 = new AddressBookContact("Sonu", "Kalva", "Shanthinagar", "Kurnool", "Telangana", 500890,8765432345,"satwika@gmail.com");
 
-
-
+if (addressBookArray.findIndex(addressBookContactObj => addressBookContactObj.firstName == addC3.firstName) == -1) {
+    addressBookArray.push(addC3);
+}
+else {
+    console.log("Duplicate Entry");
+}
+console.log(addressBookArray.toString());
