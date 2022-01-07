@@ -221,3 +221,15 @@ const ps = require('prompt-sync');
 
     addressBookArray.filter(addressBookContactObj => addressBookContactObj.state == stateName)
                     .forEach(addressBookContactObj => console.log(addressBookContactObj.toString())) 
+
+
+// View persons by city or state name
+
+    console.log("Search contact by city name")
+    console.log("\n");
+    cityName =prompt("Enter the CityName :")
+    console.log(addressBookArray.filter(addressBookContactObj => addressBookContactObj.city == cityName)
+                                .map(addressBookContactObj => addressBookContactObj.firstName))
+    stateName = prompt("Enter the StateName :")
+    console.log(addressBookArray.filter(addressBookContactObj => addressBookContactObj.state == stateName)
+                                .map(addressBookContactObj => addressBookContactObj.firstName))
