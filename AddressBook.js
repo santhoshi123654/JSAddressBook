@@ -134,6 +134,10 @@
         addressBookArray.push(addC1);
         let addC2=new AddressBookContact("Sonu","badam","alampur","Kurnool","Telangana",502501,8687536743,"sonu@gmail.com");
         addressBookArray.push(addC2);
+        let addC3=new AddressBookContact("Aleccya","kilari","mothinagar","Kalavadu","Maharastra",502511,9787536743,"allu@gmail.com");
+        addressBookArray.push(addC3);
+        let addC4=new AddressBookContact("ravali","badam","narsarlapalli","Nalgonda","Tamilnadu",500501,8687876743,"ravali@gmail.com");
+        addressBookArray.push(addC4);
         console.log("\nContacts in an array :");
         console.log(addressBookArray.toString());
 
@@ -147,7 +151,6 @@
         } else {
             console.log(`${fName} not found`)
         }
-
 
         console.log("\nAfter editing existing contact : ")
         console.log(addressBookArray.toString());        
@@ -174,8 +177,47 @@ function numberOfContactsinArray(totalContactCount) {
 }
 let totalNumberOfContacts = addressBookArray.reduce(numberOfContactsinArray, 0)
 console.log("\nThe total number of contacts after deleting the contacts is:"+totalNumberOfContacts);
+
+// let addC3 = new AddressBookContact("Sonu", "Kalva", "Shanthinagar", "Kurnool", "Telangana", 500890,8765432345,"satwika@gmail.com");
+
+//Duplicate values
+console.log("\nDuplicate Entry is :")
 console.log();
+let addC5= new AddressBookContact("Sonu", "Kalva", "Shanthinagar", "Kurnool", "Telangana", 500890,8765432345,"satwika@gmail.com");
+try {
+    addContact(addC5);
+} catch (error) {
+    console.error(error);
+}
+function isExists(addC5) {
+    let i = addressBookArray.find(addressBookContactObj => addressBookContactObj
+        .firstName == addC5.firstName && addressBookContactObj.lastName == addC5.lastName);
+    if (i != undefined) 
+    return true;
+    else{
+        return false;
+    } 
+}
+function addContact(contactToAdd) {
+    let alreadyExists = isExists(contactToAdd);
+    if (!alreadyExists) {
+        addressBookArray.push(contactToAdd);        
+    } else throw "Contact : " + contactToAdd.firstName + " " + contactToAdd.lastName + " is already present in the Address Book Array";   
+}
+console.log(addC5)
 
+//Search by city or state
 
+console.log("Search contact by city name")
+const ps = require('prompt-sync');
+    const prompt = ps();
+    console.log("\n");
+    let cityName = prompt("Enter the CityName : ")
 
+    addressBookArray.filter(addressBookContactObj => addressBookContactObj.city == cityName)
+                    .forEach(addressBookContactObj => console.log(addressBookContactObj.toString()))
+   
+    let stateName = prompt("Enter the StateName : ")
 
+    addressBookArray.filter(addressBookContactObj => addressBookContactObj.state == stateName)
+                    .forEach(addressBookContactObj => console.log(addressBookContactObj.toString())) 
