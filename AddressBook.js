@@ -221,3 +221,43 @@ const ps = require('prompt-sync');
 
     addressBookArray.filter(addressBookContactObj => addressBookContactObj.state == stateName)
                     .forEach(addressBookContactObj => console.log(addressBookContactObj.toString())) 
+
+console.log("Search contact by city name")
+    console.log("\n");
+    cityName =prompt("Enter the CityName :")
+    console.log(addressBookArray.filter(addressBookContactObj => addressBookContactObj.city == cityName)
+                                .map(addressBookContactObj => addressBookContactObj.firstName))
+    stateName = prompt("Enter the StateName :")
+    console.log(addressBookArray.filter(addressBookContactObj => addressBookContactObj.state == stateName)
+                                .map(addressBookContactObj => addressBookContactObj.firstName))
+
+
+// View persons by city or state name
+
+console.log("Search contact by city name")
+console.log("\n");
+cityName =prompt("Enter the CityName :")
+console.log(addressBookArray.filter(addressBookContactObj => addressBookContactObj.city == cityName)
+                            .map(addressBookContactObj => addressBookContactObj.firstName))
+stateName = prompt("Enter the StateName :")
+console.log(addressBookArray.filter(addressBookContactObj => addressBookContactObj.state == stateName)
+                            .map(addressBookContactObj => addressBookContactObj.firstName))
+
+
+
+//Contacts Count by City and State
+
+console.log("Contacts count by city name :-")
+cityName =prompt("Enter the CityName :")
+console.log(addressBookArray.filter(addressBookContactObj => addressBookContactObj.city == cityName)
+       .reduce((count, addressBookContactObj) => addressBookContactObj != undefined ? ++count : count, 0))
+console.log("Contacts count by stateName")
+stateName =prompt("Enter the CityName :")
+console.log(addressBookArray.filter(addressBookContactObj => addressBookContactObj.state == stateName)
+       .reduce((count, addressBookContactObj) => addressBookContactObj != undefined ? ++count : count, 0))
+
+//Sorting the entries alphabtical order by firstname
+
+console.log("Sorted Addressbook")
+console.log(addressBookArray.sort((a,b) => a.firstName.localeCompare(b.firstName)))
+
